@@ -27,7 +27,9 @@ struct ContentView: View {
             showsUserLocation: true,
             userTrackingMode: $userTrackingMode,
             annotationItems: places) { place in
-                MapMarker(coordinate: place.annotation.coordinate)
+                MapAnnotation(coordinate: place.annotation.coordinate) {
+                                Marker(mapItem: place.mapItem)
+                }
             }
             .onAppear(perform: {
                 performSearch(item: "Pizza")
